@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-lightBlue: #7ad9fb;
+  --color-brand-darkBlue: #2a5874;
+  --color-brand-black: #000000;
+  --color-brand-whiteTeal: #f1f7f7;
+  --color-brand-gradientStart: #55e4ff;
+  --color-brand-gradientEnd: #00516a;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #f1f7f7;
+  color: #2a5874;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+}

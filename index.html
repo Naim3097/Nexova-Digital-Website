@@ -1,16 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
-    <title>Nexova Digital</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexova Digital — Demo Selector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f1f7f7; color: #2a5874; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
+    .container { max-width: 900px; width: 100%; text-align: center; }
+    .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: #7ad9fb; font-weight: 600; margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1; margin-bottom: 1rem; }
+    h1 em { font-style: italic; background: linear-gradient(135deg, #55e4ff, #00516a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { color: #2a5874aa; font-size: 1.05rem; margin-bottom: 3rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+    .card { border: 1px solid #2a587418; background: #fff; padding: 2.5rem 2rem; text-align: left; text-decoration: none; color: inherit; transition: all 0.25s ease; position: relative; overflow: hidden; }
+    .card:hover { border-color: #7ad9fb; transform: translateY(-4px); box-shadow: 0 12px 40px #2a587410; }
+    .card-number { font-size: 4rem; font-family: 'Playfair Display', serif; font-weight: 700; color: #2a587408; position: absolute; top: -0.5rem; right: 1rem; line-height: 1; }
+    .card-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; color: #7ad9fb; font-weight: 600; margin-bottom: 0.75rem; }
+    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; }
+    .card p { font-size: 0.85rem; color: #2a587480; line-height: 1.6; margin-bottom: 1.5rem; }
+    .card-tag { display: inline-block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; padding: 0.35rem 0.75rem; border: 1px solid #2a587420; color: #2a5874; }
+    .card:first-child .card-tag { background: linear-gradient(135deg, #55e4ff, #00516a); color: #fff; border: none; border-radius: 100px; }
+    .card-arrow { position: absolute; bottom: 2rem; right: 2rem; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #2a587430; transition: all 0.25s ease; }
+    .card:hover .card-arrow { color: #7ad9fb; transform: translate(2px, -2px); }
+    .footer { margin-top: 3rem; font-size: 0.75rem; color: #2a587440; }
+    .footer a { color: #7ad9fb; text-decoration: none; }
+    .status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; color: #2a587450; margin-top: 0.75rem; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+    .dot.offline { background: #f87171; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="label">Nexova Digital</p>
+    <h1>Choose Your <em>Demo</em></h1>
+    <p class="subtitle">Two distinct design directions for the same brand. Explore each version side by side.</p>
+
+    <div class="cards">
+      <a class="card" href="http://localhost:3001" id="card1">
+        <span class="card-number">01</span>
+        <p class="card-label">Version 1</p>
+        <h2>Rounded & Gradient</h2>
+        <p>Warm, approachable design with pill buttons, rounded cards, gradient fills, and Montserrat + Inter typography.</p>
+        <span class="card-tag">Demo 1</span>
+        <span class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+        <div class="status"><span class="dot offline" id="dot1"></span><span id="status1">Checking…</span></div>
+      </a>
+
+      <a class="card" href="http://localhost:3002" id="card2">
+        <span class="card-number">02</span>
+        <p class="card-label">Version 2</p>
+        <h2>Editorial & Sharp</h2>
+        <p>Sophisticated magazine-style design with sharp geometry, serif headings (Playfair Display), and border-based hierarchy.</p>
+        <span class="card-tag">Demo 2</span>
+        <span class="card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+        <div class="status"><span class="dot offline" id="dot2"></span><span id="status2">Checking…</span></div>
+      </a>
+    </div>
+
+    <p class="footer">Design docs: <a href="uiuxdemo1.md">uiuxdemo1.md</a> · <a href="uiuxdemo2.md">uiuxdemo2.md</a></p>
+  </div>
+
+  <script>
+    async function checkServer(port, dotId, statusId) {
+      const dot = document.getElementById(dotId);
+      const status = document.getElementById(statusId);
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 2000);
+        await fetch(`http://localhost:${port}`, { mode: 'no-cors', signal: controller.signal });
+        clearTimeout(timeout);
+        dot.classList.remove('offline');
+        status.textContent = `localhost:${port}`;
+      } catch {
+        dot.classList.add('offline');
+        status.textContent = 'Offline';
+      }
+    }
+    checkServer(3001, 'dot1', 'status1');
+    checkServer(3002, 'dot2', 'status2');
+    setInterval(() => {
+      checkServer(3001, 'dot1', 'status1');
+      checkServer(3002, 'dot2', 'status2');
+    }, 5000);
+  </script>
+</body>
 </html>
