@@ -17,22 +17,22 @@ Version 2 embraces an **editorial / magazine-inspired** design language. Where V
 
 ## Color Palette
 
-Same brand palette as V1 — applied differently.
+V2 uses a red-based palette — applied with editorial restraint.
 
 | Token            | Value                          | Usage in V2                                    |
 | ---------------- | ------------------------------ | ---------------------------------------------- |
-| Light Blue       | `#7ad9fb`                      | Accent labels, icons, hover states, thin lines |
-| Dark Blue        | `#2a5874`                      | Headlines, dark sections, primary buttons      |
-| White Teal       | `#f1f7f7`                      | Page backgrounds, light sections               |
+| Light Red        | `#fb7a7a`                      | Accent labels, icons, hover states, thin lines |
+| Dark Red         | `#742a2a`                      | Headlines, dark sections, primary buttons      |
+| White Rose       | `#f7f1f1`                      | Page backgrounds, light sections               |
 | Black            | `#000000`                      | Body text, borders                             |
-| Gradient Start   | `#55e4ff`                      | Gradient text only (hero headings)             |
-| Gradient End     | `#00516a`                      | Gradient text only (hero headings)             |
+| Gradient Start   | `#ff5555`                      | Gradient text only (hero headings)             |
+| Gradient End     | `#6a0019`                      | Gradient text only (hero headings)             |
 
 ### V2 Color Application Differences
 
 - **Gradient usage reduced** — Instead of gradient button fills, V2 uses gradients sparingly for heading text effects only.
-- **Dark sections** — Full-bleed `#2a5874` backgrounds for stats, testimonials, and CTA blocks.
-- **Border accents** — `border-t-2` with `#7ad9fb` replaces filled background cards.
+- **Dark sections** — Full-bleed `#742a2a` backgrounds for stats, testimonials, and CTA blocks.
+- **Border accents** — `border-t-2` with `#fb7a7a` replaces filled background cards.
 
 ---
 
@@ -48,7 +48,7 @@ Same brand palette as V1 — applied differently.
 
 - **Hero headings**: 5xl–7xl, Playfair Display Bold, leading-[0.95] for tight line height.
 - **Italic emphasis**: `<em>` tags in headings use Playfair Display italic with gradient text fill.
-- **Section labels**: Tiny uppercase text (`text-xs tracking-[0.3em]`) in Light Blue, placed above section headings.
+- **Section labels**: Tiny uppercase text (`text-xs tracking-[0.3em]`) in Light Red, placed above section headings.
 - **Numbered items**: Large faded numbers (`text-3xl opacity-10`) as editorial markers.
 
 ---
@@ -58,36 +58,36 @@ Same brand palette as V1 — applied differently.
 ### Navigation
 
 - **Desktop**: Centered italic logo ("*Nexova*") with navigation links split left and right. Last link is a bordered CTA.
-- **Mobile**: Full-screen slide-over overlay with dark background (`#2a5874`), large serif navigation text, and smooth translate-x transition.
-- **Active link**: Light Blue underline, 2px offset.
+- **Mobile**: Full-screen slide-over overlay with dark background (`#742a2a`), large serif navigation text, and smooth translate-x transition.
+- **Active link**: Light Red underline, 2px offset.
 
 ### Buttons
 
-- **Primary**: Square, no border-radius. `bg-brand-darkBlue text-white` with hover to `bg-brand-lightBlue`.
-- **Secondary**: Square, `border-2 border-brand-darkBlue` with hover fill.
+- **Primary**: Square, no border-radius. `bg-brand-darkRed text-white` with hover to `bg-brand-lightRed`.
+- **Secondary**: Square, `border-2 border-brand-darkRed` with hover fill.
 - **CTA with arrow**: Inline-flex with `ArrowUpRight` icon, group-hover translate animation.
 
 ### Cards & Containers
 
 - **No rounded corners** — All elements are sharp-edged.
-- **Border containers**: Thin `border border-brand-darkBlue/10` replaces shadow-based cards.
-- **Accent borders**: `border-t-2 border-brand-lightBlue/20` on top of feature items.
-- **Dark cards**: `bg-brand-darkBlue text-brand-whiteTeal` for highlight cards.
+- **Border containers**: Thin `border border-brand-darkRed/10` replaces shadow-based cards.
+- **Accent borders**: `border-t-2 border-brand-lightRed/20` on top of feature items.
+- **Dark cards**: `bg-brand-darkRed text-brand-whiteRose` for highlight cards.
 
 ### Sections
 
-- **Full-bleed alternating**: Light (`bg-white` / `bg-brand-whiteTeal`) and dark (`bg-brand-darkBlue`) sections.
+- **Full-bleed alternating**: Light (`bg-white` / `bg-brand-whiteRose`) and dark (`bg-brand-darkRed`) sections.
 - **Split layouts**: Grid with unequal columns (e.g., `lg:grid-cols-3 gap-16` with one column for heading, two for content).
-- **Dividers**: `border-t border-brand-darkBlue/10` between sections instead of padding alone.
+- **Dividers**: `border-t border-brand-darkRed/10` between sections instead of padding alone.
 
 ### Tables
 
 - **Clean editorial style**: No cell backgrounds. `border-b` row dividers. Uppercase tracking headers.
-- **Check marks**: Light Blue `<Check>` icons for boolean values.
+- **Check marks**: Light Red `<Check>` icons for boolean values.
 
 ### Forms
 
-- **Bottom-border inputs**: `border-b-2` only (no full border). Focus state changes border to Light Blue.
+- **Bottom-border inputs**: `border-b-2` only (no full border). Focus state changes border to Light Red.
 - **Labels**: Uppercase tracking, muted opacity.
 - **Inline newsletter**: Input + button flush-joined, no gap.
 

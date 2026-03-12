@@ -36,13 +36,13 @@ export default function ContactUs() {
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-6">Contact</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-6">Contact</p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[0.95]">
               Let's Start <em className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd">Something</em>
             </h1>
           </div>
           <div>
-            <p className="text-brand-darkBlue/60 text-lg">
+            <p className="text-brand-darkRed/60 text-lg">
               Have a project in mind? We'd love to hear about it. Fill out the form or reach out directly — we respond within 24 hours.
             </p>
           </div>
@@ -50,15 +50,15 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Info Bar */}
-      <section className="border-t border-b border-brand-darkBlue/10 py-0">
+      <section className="border-t border-b border-brand-darkRed/10 py-0">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {contactInfo.map((info, i) => (
-            <div key={i} className="px-6 lg:px-12 py-6 border-b sm:border-b-0 sm:border-r last:border-r-0 border-brand-darkBlue/10 flex items-center gap-4">
-              <div className="text-brand-lightBlue">{info.icon}</div>
+            <div key={i} className="px-6 lg:px-12 py-6 border-b sm:border-b-0 sm:border-r last:border-r-0 border-brand-darkRed/10 flex items-center gap-4">
+              <div className="text-brand-lightRed">{info.icon}</div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-brand-darkBlue/40 mb-0.5">{info.label}</p>
+                <p className="text-xs uppercase tracking-wider text-brand-darkRed/40 mb-0.5">{info.label}</p>
                 {info.href ? (
-                  <a href={info.href} className="text-sm font-medium hover:text-brand-lightBlue transition">{info.value}</a>
+                  <a href={info.href} className="text-sm font-medium hover:text-brand-lightRed transition">{info.value}</a>
                 ) : (
                   <p className="text-sm font-medium">{info.value}</p>
                 )}
@@ -77,26 +77,26 @@ export default function ContactUs() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Full Name *</label>
+                  <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Full Name *</label>
                   <input type="text" name="name" value={formData.name} onChange={handleChange} required
-                    className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm" placeholder="John Smith" />
+                    className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm" placeholder="John Smith" />
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Email *</label>
+                  <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Email *</label>
                   <input type="email" name="email" value={formData.email} onChange={handleChange} required
-                    className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm" placeholder="john@company.com" />
+                    className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm" placeholder="john@company.com" />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Company</label>
+                  <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Company</label>
                   <input type="text" name="company" value={formData.company} onChange={handleChange}
-                    className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm" placeholder="Company name" />
+                    className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm" placeholder="Company name" />
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Service Interest</label>
+                  <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Service Interest</label>
                   <select name="service" value={formData.service} onChange={handleChange}
-                    className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm">
+                    className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm">
                     <option value="">Select a service</option>
                     <option value="brand-identity">Brand Identity Design</option>
                     <option value="social-media">Social Media Management</option>
@@ -107,9 +107,9 @@ export default function ContactUs() {
                 </div>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Budget Range</label>
+                <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Budget Range</label>
                 <select name="budget" value={formData.budget} onChange={handleChange}
-                  className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm">
+                  className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm">
                   <option value="">Select budget range</option>
                   <option value="under-1k">Under $1,000</option>
                   <option value="1k-3k">$1,000 – $3,000</option>
@@ -119,11 +119,11 @@ export default function ContactUs() {
                 </select>
               </div>
               <div>
-                <label className="text-xs uppercase tracking-wider text-brand-darkBlue/40 block mb-2">Project Details *</label>
+                <label className="text-xs uppercase tracking-wider text-brand-darkRed/40 block mb-2">Project Details *</label>
                 <textarea name="message" value={formData.message} onChange={handleChange} required rows="5"
-                  className="w-full border-b-2 border-brand-darkBlue/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightBlue transition text-sm resize-none" placeholder="Tell us about your brand, goals, and timeline..." />
+                  className="w-full border-b-2 border-brand-darkRed/10 py-3 bg-transparent focus:outline-none focus:border-brand-lightRed transition text-sm resize-none" placeholder="Tell us about your brand, goals, and timeline..." />
               </div>
-              <button type="submit" className="inline-flex items-center gap-2 bg-brand-darkBlue text-white px-8 py-4 font-semibold text-sm uppercase tracking-wider hover:bg-brand-lightBlue transition">
+              <button type="submit" className="inline-flex items-center gap-2 bg-brand-darkRed text-white px-8 py-4 font-semibold text-sm uppercase tracking-wider hover:bg-brand-lightRed transition">
                 <Send size={16} /> Send Message
               </button>
             </form>
@@ -131,21 +131,21 @@ export default function ContactUs() {
 
           {/* Sidebar */}
           <div className="lg:col-span-2">
-            <div className="border-l border-brand-darkBlue/10 pl-8 lg:pl-12">
+            <div className="border-l border-brand-darkRed/10 pl-8 lg:pl-12">
               <h3 className="text-xl font-heading font-bold mb-8">Frequently Asked</h3>
               <div className="space-y-8">
                 {faqs.map((faq, i) => (
-                  <div key={i} className="border-t border-brand-darkBlue/10 pt-6">
+                  <div key={i} className="border-t border-brand-darkRed/10 pt-6">
                     <h4 className="font-bold text-sm mb-2">{faq.q}</h4>
-                    <p className="text-sm text-brand-darkBlue/60">{faq.a}</p>
+                    <p className="text-sm text-brand-darkRed/60">{faq.a}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-16 p-8 bg-brand-darkBlue text-brand-whiteTeal">
+              <div className="mt-16 p-8 bg-brand-darkRed text-brand-whiteRose">
                 <h4 className="font-heading font-bold text-lg mb-3">Prefer a call?</h4>
                 <p className="text-sm opacity-60 mb-6">Book a free 30-minute consultation to discuss your brand needs.</p>
-                <a href="#" className="inline-flex items-center gap-2 text-brand-lightBlue font-semibold text-sm hover:underline">
+                <a href="#" className="inline-flex items-center gap-2 text-brand-lightRed font-semibold text-sm hover:underline">
                   Schedule a Call <ArrowUpRight size={14} />
                 </a>
               </div>
@@ -155,13 +155,13 @@ export default function ContactUs() {
       </section>
 
       {/* Map placeholder */}
-      <section className="bg-brand-darkBlue/5">
+      <section className="bg-brand-darkRed/5">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 text-center">
-          <div className="aspect-[3/1] bg-gradient-to-br from-brand-lightBlue/10 to-brand-darkBlue/5 flex items-center justify-center border border-brand-darkBlue/10">
+          <div className="aspect-[3/1] bg-gradient-to-br from-brand-lightRed/10 to-brand-darkRed/5 flex items-center justify-center border border-brand-darkRed/10">
             <div>
-              <MapPin size={32} className="text-brand-lightBlue mx-auto mb-4" />
+              <MapPin size={32} className="text-brand-lightRed mx-auto mb-4" />
               <p className="font-heading font-bold text-lg">Kuala Lumpur, Malaysia</p>
-              <p className="text-sm text-brand-darkBlue/40 mt-1">Serving clients worldwide</p>
+              <p className="text-sm text-brand-darkRed/40 mt-1">Serving clients worldwide</p>
             </div>
           </div>
         </div>

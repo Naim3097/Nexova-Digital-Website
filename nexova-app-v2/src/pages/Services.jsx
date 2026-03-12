@@ -45,13 +45,13 @@ export default function Services() {
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-6">Services</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-6">Services</p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[0.95]">
               We Build Identities That <em className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd">Resonate</em>
             </h1>
           </div>
           <div>
-            <p className="text-lg text-brand-darkBlue/60 leading-relaxed max-w-lg">
+            <p className="text-lg text-brand-darkRed/60 leading-relaxed max-w-lg">
               We don't just create graphics — we build a cohesive digital identity that sparks real connection. Strategic creativity meets human-centric design across every touchpoint.
             </p>
           </div>
@@ -59,27 +59,27 @@ export default function Services() {
       </section>
 
       {/* Services — Full-width alternating rows */}
-      <section className="border-t border-brand-darkBlue/10">
+      <section className="border-t border-brand-darkRed/10">
         {services.map((service, i) => (
-          <div key={i} className={`border-b border-brand-darkBlue/10 ${i % 2 === 1 ? 'bg-white' : ''}`}>
+          <div key={i} className={`border-b border-brand-darkRed/10 ${i % 2 === 1 ? 'bg-white' : ''}`}>
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
               <div className={`grid lg:grid-cols-2 gap-12 lg:gap-24 items-start ${i % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                 <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                  <span className="text-7xl font-heading font-bold text-brand-lightBlue/15">{service.num}</span>
+                  <span className="text-7xl font-heading font-bold text-brand-lightRed/15">{service.num}</span>
                   <h2 className="text-3xl md:text-4xl font-heading font-bold -mt-4 mb-6">{service.title}</h2>
-                  <p className="text-brand-darkBlue/60 leading-relaxed text-lg mb-8">{service.desc}</p>
-                  <Link to="/contact" className="group inline-flex items-center gap-2 bg-brand-darkBlue text-white px-6 py-3 font-semibold text-sm hover:bg-brand-darkBlue/90 transition">
+                  <p className="text-brand-darkRed/60 leading-relaxed text-lg mb-8">{service.desc}</p>
+                  <Link to="/contact" className="group inline-flex items-center gap-2 bg-brand-darkRed text-white px-6 py-3 font-semibold text-sm hover:bg-brand-darkRed/90 transition">
                     Get a Quote <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 </div>
                 <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
-                  <div className="bg-brand-whiteTeal border border-brand-darkBlue/5 p-8">
-                    <h3 className="text-xs uppercase tracking-[0.3em] font-semibold text-brand-darkBlue/40 mb-6">Key Deliverables</h3>
+                  <div className="bg-brand-whiteRose border border-brand-darkRed/5 p-8">
+                    <h3 className="text-xs uppercase tracking-[0.3em] font-semibold text-brand-darkRed/40 mb-6">Key Deliverables</h3>
                     <ul className="space-y-4">
                       {service.deliverables.map((item, di) => (
                         <li key={di} className="flex items-start gap-3">
-                          <CheckCircle size={18} className="text-brand-lightBlue mt-0.5 shrink-0" />
-                          <span className="text-brand-darkBlue/80">{item}</span>
+                          <CheckCircle size={18} className="text-brand-lightRed mt-0.5 shrink-0" />
+                          <span className="text-brand-darkRed/80">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -95,15 +95,15 @@ export default function Services() {
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24">
         <div className="grid lg:grid-cols-3 gap-16 items-start">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3">Why Nexova</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3">Why Nexova</p>
             <h2 className="text-4xl md:text-5xl font-heading font-bold leading-tight">Why Brands Choose Us</h2>
           </div>
           <div className="lg:col-span-2 grid sm:grid-cols-2 gap-8">
             {whyUs.map((item, i) => (
-              <div key={i} className="border-t-2 border-brand-lightBlue/20 pt-6">
-                <div className="text-brand-lightBlue mb-3">{item.icon}</div>
+              <div key={i} className="border-t-2 border-brand-lightRed/20 pt-6">
+                <div className="text-brand-lightRed mb-3">{item.icon}</div>
                 <h3 className="font-bold mb-2">{item.title}</h3>
-                <p className="text-sm text-brand-darkBlue/60 leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-brand-darkRed/60 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -114,19 +114,19 @@ export default function Services() {
       <section className="bg-white py-24 px-6 lg:px-12">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-20">
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3">How It Works</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3">How It Works</p>
             <h2 className="text-4xl md:text-5xl font-heading font-bold">Our Proven Process</h2>
           </div>
           <div className="max-w-3xl mx-auto space-y-0">
             {process.map((item, i) => (
               <div key={i} className="flex gap-8 pb-12 last:pb-0">
                 <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 bg-brand-lightBlue text-white flex items-center justify-center font-bold text-sm shrink-0">{item.step}</div>
-                  {i < process.length - 1 && <div className="w-px flex-1 bg-brand-lightBlue/20 mt-2"></div>}
+                  <div className="w-10 h-10 bg-brand-lightRed text-white flex items-center justify-center font-bold text-sm shrink-0">{item.step}</div>
+                  {i < process.length - 1 && <div className="w-px flex-1 bg-brand-lightRed/20 mt-2"></div>}
                 </div>
                 <div className="pb-8">
                   <h3 className="text-xl font-heading font-bold mb-2">{item.title}</h3>
-                  <p className="text-brand-darkBlue/60 leading-relaxed">{item.desc}</p>
+                  <p className="text-brand-darkRed/60 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -138,10 +138,10 @@ export default function Services() {
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24">
         <div className="grid lg:grid-cols-3 gap-16">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3">FAQ</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3">FAQ</p>
             <h2 className="text-4xl font-heading font-bold">Common Questions</h2>
           </div>
-          <div className="lg:col-span-2 divide-y divide-brand-darkBlue/10">
+          <div className="lg:col-span-2 divide-y divide-brand-darkRed/10">
             {[
               { q: "How long does a typical project take?", a: "Most projects are completed within 5-10 business days. Larger brand identity projects may take 2-4 weeks depending on scope and complexity." },
               { q: "Do you offer revisions?", a: "Yes! Every project includes up to two rounds of revisions to ensure the final deliverables match your vision perfectly." },
@@ -150,7 +150,7 @@ export default function Services() {
             ].map((faq, i) => (
               <div key={i} className="py-8">
                 <h3 className="font-bold text-lg mb-3">{faq.q}</h3>
-                <p className="text-brand-darkBlue/60 leading-relaxed">{faq.a}</p>
+                <p className="text-brand-darkRed/60 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -158,10 +158,10 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-darkBlue text-brand-whiteTeal py-24 px-6 lg:px-12">
+      <section className="bg-brand-darkRed text-brand-whiteRose py-24 px-6 lg:px-12">
         <div className="max-w-[1400px] mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6 max-w-3xl mx-auto leading-tight">
-            Have a project <em className="text-brand-lightBlue">in mind</em>?
+            Have a project <em className="text-brand-lightRed">in mind</em>?
           </h2>
           <p className="text-lg opacity-60 mb-10 max-w-xl mx-auto">
             Let's talk about your brand goals and how our services can help you stand out.

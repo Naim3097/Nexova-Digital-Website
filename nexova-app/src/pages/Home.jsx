@@ -1,6 +1,19 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Palette, PenTool, BarChart3, Star, Users, Award, TrendingUp } from 'lucide-react';
 
+const floatingBrands = [
+  { src: "/brands/nike.png", alt: "Nike", top: "8%", left: "8%", size: "w-16 h-16", delay: "0s" },
+  { src: "/brands/adidas.png", alt: "Adidas", top: "14%", left: "35%", size: "w-14 h-14", delay: "0.5s" },
+  { src: "/brands/puma.png", alt: "Puma", top: "6%", right: "18%", size: "w-14 h-14", delay: "1s" },
+  { src: "/brands/lacoste.png", alt: "Lacoste", top: "38%", left: "5%", size: "w-12 h-12", delay: "1.5s" },
+  { src: "/brands/splendid.png", alt: "Splendid", top: "32%", right: "6%", size: "w-16 h-16", delay: "0.8s" },
+  { src: "/brands/nike.png", alt: "Nike", bottom: "28%", left: "12%", size: "w-14 h-14", delay: "2s" },
+  { src: "/brands/adidas.png", alt: "Adidas", bottom: "22%", right: "12%", size: "w-12 h-12", delay: "0.3s" },
+  { src: "/brands/puma.png", alt: "Puma", bottom: "10%", left: "30%", size: "w-12 h-12", delay: "1.2s" },
+  { src: "/brands/lacoste.png", alt: "Lacoste", bottom: "14%", right: "28%", size: "w-14 h-14", delay: "1.8s" },
+  { src: "/brands/splendid.png", alt: "Splendid", top: "50%", right: "3%", size: "w-12 h-12", delay: "0.6s" },
+];
+
 export default function Home() {
   const services = [
     { icon: <Palette size={28} />, title: "Social Media Design", desc: "Scroll-stopping visuals crafted for every platform. We design carousels, reels, and posts that feel authentic to your brand voice." },
@@ -39,38 +52,48 @@ export default function Home() {
 
   return (
     <div className="flex-grow flex flex-col">
-      {/* Hero Section */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-16 md:py-24 text-center lg:text-left flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-        <div className="flex-1">
-          <div className="inline-flex items-center bg-brand-lightBlue/10 text-brand-darkBlue px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Star size={14} className="mr-2 text-brand-lightBlue" /> Trusted by 150+ growing brands
+      {/* Hero Section — Mobbin-style centered with floating logos */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4">
+        {/* Floating brand logos */}
+        {floatingBrands.map((brand, i) => (
+          <div
+            key={i}
+            className={`absolute ${brand.size} rounded-2xl shadow-lg overflow-hidden bg-white p-2 z-10`}
+            style={{
+              top: brand.top,
+              left: brand.left,
+              right: brand.right,
+              bottom: brand.bottom,
+              animation: `floatPulse 4s ease-in-out ${brand.delay} infinite`,
+            }}
+          >
+            <img src={brand.src} alt={brand.alt} className="w-full h-full object-contain" />
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
-            Human-Centric <br className="hidden lg:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd">
-              Social Media Design
-            </span>
-            <br className="hidden lg:block"/>& Brand Kits
-          </h1>
-          <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            We build trust and professional authority through authentic digital marketing, creative branding content, and engaging social experiences. No synthetic tropes — just real connections that convert.
+        ))}
+
+        {/* Centered content */}
+        <div className="relative z-20 text-center max-w-4xl mx-auto">
+          <p className="text-brand-darkBlue/60 font-semibold text-base md:text-lg mb-4">
+            A growing portfolio of
           </p>
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <Link to="/contact" className="bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd text-white px-8 py-3.5 rounded-full font-semibold hover:opacity-90 shadow-lg shadow-brand-lightBlue/30 transition inline-flex items-center">
-              Let's Talk Brand <ArrowRight size={18} className="ml-2" />
-            </Link>
-            <Link to="/product" className="border-2 border-brand-darkBlue text-brand-darkBlue px-8 py-3.5 rounded-full font-semibold hover:bg-brand-darkBlue hover:text-white transition">
-              View Packages
-            </Link>
-          </div>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue mb-2">
+            150+ brands
+          </h1>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue mb-2">
+            3M+ impressions
+          </h1>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue/40 mt-4">
+            500+ campaigns
+          </h2>
         </div>
-        <div className="flex-1 w-full max-w-md lg:max-w-lg">
-          <div className="aspect-[4/5] bg-gray-200 rounded-3xl overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-lightBlue/20 to-brand-darkBlue/80 flex items-center justify-center">
-              <span className="text-white/80 font-heading font-medium text-xl">[ Creative Team Photo ]</span>
-            </div>
-          </div>
-        </div>
+
+        {/* CSS animation */}
+        <style>{`
+          @keyframes floatPulse {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.05); }
+          }
+        `}</style>
       </section>
 
       {/* Trusted By / Social Proof */}

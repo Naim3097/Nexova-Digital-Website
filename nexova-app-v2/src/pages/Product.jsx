@@ -58,26 +58,26 @@ export default function Product() {
     <div>
       {/* Hero */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-32 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-6">Packages</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-6">Packages</p>
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[0.95] mb-8 max-w-4xl mx-auto">
           Transparent Pricing, <em className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd">Exceptional Value</em>
         </h1>
-        <p className="text-lg text-brand-darkBlue/60 max-w-xl mx-auto">
+        <p className="text-lg text-brand-darkRed/60 max-w-xl mx-auto">
           Choose the package that fits your brand goals. Every plan delivers the same attention to detail and human touch.
         </p>
       </section>
 
       {/* Pricing — Horizontal card layout */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 pb-24">
-        <div className="grid md:grid-cols-3 gap-0 border border-brand-darkBlue/10">
+        <div className="grid md:grid-cols-3 gap-0 border border-brand-darkRed/10">
           {packages.map((pkg, idx) => (
-            <div key={idx} className={`p-8 lg:p-10 flex flex-col border-b md:border-b-0 md:border-r last:border-r-0 border-brand-darkBlue/10 relative ${
-              pkg.highlight ? 'bg-brand-darkBlue text-brand-whiteTeal' : 'bg-white'
+            <div key={idx} className={`p-8 lg:p-10 flex flex-col border-b md:border-b-0 md:border-r last:border-r-0 border-brand-darkRed/10 relative ${
+              pkg.highlight ? 'bg-brand-darkRed text-brand-whiteRose' : 'bg-white'
             }`}>
               {pkg.highlight && (
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd"></div>
               )}
-              <p className={`text-xs uppercase tracking-[0.3em] font-semibold mb-1 ${pkg.highlight ? 'text-brand-lightBlue' : 'text-brand-lightBlue'}`}>{pkg.tagline}</p>
+              <p className={`text-xs uppercase tracking-[0.3em] font-semibold mb-1 ${pkg.highlight ? 'text-brand-lightRed' : 'text-brand-lightRed'}`}>{pkg.tagline}</p>
               <h2 className="text-2xl font-heading font-bold mb-4">{pkg.name}</h2>
               <div className="mb-8">
                 <span className="text-5xl font-heading font-bold">{pkg.price}</span>
@@ -86,7 +86,7 @@ export default function Product() {
               <ul className="space-y-3 mb-10 flex-grow">
                 {pkg.features.map((f, fi) => (
                   <li key={fi} className="flex items-start gap-3 text-sm">
-                    <Check size={16} className={`mt-0.5 shrink-0 ${pkg.highlight ? 'text-brand-lightBlue' : 'text-brand-lightBlue'}`} />
+                    <Check size={16} className={`mt-0.5 shrink-0 ${pkg.highlight ? 'text-brand-lightRed' : 'text-brand-lightRed'}`} />
                     <span className={pkg.highlight ? 'opacity-80' : 'opacity-70'}>{f}</span>
                   </li>
                 ))}
@@ -94,7 +94,7 @@ export default function Product() {
               <Link to="/contact" className={`block text-center py-4 font-semibold text-sm uppercase tracking-wider transition ${
                 pkg.highlight
                   ? 'bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd text-white hover:opacity-90'
-                  : 'border-2 border-brand-darkBlue text-brand-darkBlue hover:bg-brand-darkBlue hover:text-white'
+                  : 'border-2 border-brand-darkRed text-brand-darkRed hover:bg-brand-darkRed hover:text-white'
               }`}>
                 Select Package
               </Link>
@@ -107,26 +107,26 @@ export default function Product() {
       <section className="bg-white py-24 px-6 lg:px-12">
         <div className="max-w-[1000px] mx-auto">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3">Compare</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3">Compare</p>
             <h2 className="text-4xl font-heading font-bold">Package Comparison</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b-2 border-brand-darkBlue/10">
+                <tr className="border-b-2 border-brand-darkRed/10">
                   <th className="py-4 pr-4 text-left text-xs uppercase tracking-wider opacity-40 font-semibold">Feature</th>
                   <th className="py-4 px-4 text-center text-xs uppercase tracking-wider opacity-40 font-semibold">Starter</th>
-                  <th className="py-4 px-4 text-center text-xs uppercase tracking-wider text-brand-lightBlue font-semibold">Pro</th>
+                  <th className="py-4 px-4 text-center text-xs uppercase tracking-wider text-brand-lightRed font-semibold">Pro</th>
                   <th className="py-4 pl-4 text-center text-xs uppercase tracking-wider opacity-40 font-semibold">Ignition</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row, i) => (
-                  <tr key={i} className="border-b border-brand-darkBlue/5">
+                  <tr key={i} className="border-b border-brand-darkRed/5">
                     <td className="py-4 pr-4 text-sm">{row.feature}</td>
                     {[row.starter, row.pro, row.ignition].map((val, ci) => (
                       <td key={ci} className="py-4 px-4 text-center text-sm">
-                        {val === true ? <Check size={16} className="text-brand-lightBlue mx-auto" /> :
+                        {val === true ? <Check size={16} className="text-brand-lightRed mx-auto" /> :
                          val === false ? <span className="opacity-20">—</span> :
                          <span className="font-medium">{val}</span>}
                       </td>
@@ -143,17 +143,17 @@ export default function Product() {
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24">
         <div className="grid lg:grid-cols-3 gap-16 items-start">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3">Extras</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3">Extras</p>
             <h2 className="text-4xl font-heading font-bold leading-tight">Enhance Any Package</h2>
           </div>
           <div className="lg:col-span-2 grid sm:grid-cols-2 gap-6">
             {addOns.map((addon, i) => (
-              <div key={i} className="border-t-2 border-brand-lightBlue/20 pt-6">
+              <div key={i} className="border-t-2 border-brand-lightRed/20 pt-6">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-bold">{addon.name}</h3>
-                  <span className="text-sm font-heading font-bold text-brand-lightBlue shrink-0 ml-4">{addon.price}</span>
+                  <span className="text-sm font-heading font-bold text-brand-lightRed shrink-0 ml-4">{addon.price}</span>
                 </div>
-                <p className="text-sm text-brand-darkBlue/60">{addon.desc}</p>
+                <p className="text-sm text-brand-darkRed/60">{addon.desc}</p>
               </div>
             ))}
           </div>
@@ -163,14 +163,14 @@ export default function Product() {
       {/* Guarantees */}
       <section className="bg-white py-24 px-6 lg:px-12">
         <div className="max-w-[1400px] mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-brand-lightBlue font-semibold mb-3 text-center">Our Promise</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-brand-lightRed font-semibold mb-3 text-center">Our Promise</p>
           <h2 className="text-4xl font-heading font-bold text-center mb-16">Built on Trust</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-brand-darkBlue/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-brand-darkRed/10">
             {guarantees.map((g, i) => (
-              <div key={i} className="p-8 border-b sm:border-b-0 sm:border-r last:border-r-0 border-brand-darkBlue/10 text-center">
-                <div className="text-brand-lightBlue mb-4 flex justify-center">{g.icon}</div>
+              <div key={i} className="p-8 border-b sm:border-b-0 sm:border-r last:border-r-0 border-brand-darkRed/10 text-center">
+                <div className="text-brand-lightRed mb-4 flex justify-center">{g.icon}</div>
                 <h3 className="font-bold mb-2 text-sm">{g.title}</h3>
-                <p className="text-xs text-brand-darkBlue/60 leading-relaxed">{g.desc}</p>
+                <p className="text-xs text-brand-darkRed/60 leading-relaxed">{g.desc}</p>
               </div>
             ))}
           </div>
@@ -178,10 +178,10 @@ export default function Product() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-darkBlue text-brand-whiteTeal py-24 px-6 lg:px-12">
+      <section className="bg-brand-darkRed text-brand-whiteRose py-24 px-6 lg:px-12">
         <div className="max-w-[1400px] mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-heading font-bold mb-6 max-w-3xl mx-auto leading-tight">
-            Need something <em className="text-brand-lightBlue">custom</em>?
+            Need something <em className="text-brand-lightRed">custom</em>?
           </h2>
           <p className="text-lg opacity-60 mb-10 max-w-xl mx-auto">
             Every brand is unique. Reach out and we'll craft a bespoke solution just for you.
