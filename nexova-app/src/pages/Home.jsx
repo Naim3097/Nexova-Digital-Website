@@ -67,7 +67,7 @@ export default function Home() {
               animation: `floatPulse 4s ease-in-out ${brand.delay} infinite`,
             }}
           >
-            <img src={brand.src} alt={brand.alt} className="w-full h-full object-contain" />
+            <img src={`${import.meta.env.BASE_URL}${brand.src.replace(/^\//, '')}`}  alt={brand.alt} className="w-full h-full object-contain" />
           </div>
         ))}
 

@@ -15,7 +15,7 @@ if (fs.existsSync('vercel_build')) fs.rmSync('vercel_build', { recursive: true, 
 fs.mkdirSync('vercel_build');
 
 console.log('Copying root files...');
-fs.copyFileSync('index.html', 'vercel_build/index.html');
+let idx = fs.readFileSync('index.html', 'utf-8'); idx = idx.replace(/http:\/\/localhost:3001/g, '').replace(/http:\/\/localhost:3002/g, ''); fs.writeFileSync('vercel_build/index.html', idx);
 if (fs.existsSync('uiuxdemo1.md')) fs.copyFileSync('uiuxdemo1.md', 'vercel_build/uiuxdemo1.md');
 if (fs.existsSync('uiuxdemo2.md')) fs.copyFileSync('uiuxdemo2.md', 'vercel_build/uiuxdemo2.md');
 

@@ -153,10 +153,10 @@ function Footer() {
 function DemoSwitcher() {
   return (
     <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end gap-2">
-      <a href="/demo1/" className="flex items-center gap-2 bg-brand-darkRed text-white px-5 py-3 shadow-lg hover:bg-brand-lightRed transition text-sm font-semibold uppercase tracking-wider">
+      <a href={import.meta.env.DEV ? "http://localhost:3001/demo1/" : "/demo1/"} className="flex items-center gap-2 bg-brand-darkRed text-white px-5 py-3 shadow-lg hover:bg-brand-lightRed transition text-sm font-semibold uppercase tracking-wider">
         Switch to Demo 1 →
       </a>
-      <a href="/" className="flex items-center gap-2 bg-white text-brand-darkRed px-4 py-2 shadow-lg border border-brand-darkRed/10 hover:border-brand-lightRed transition text-xs font-semibold uppercase tracking-wider">
+      <a href={import.meta.env.DEV ? "http://localhost:3000/" : "/"} className="flex items-center gap-2 bg-white text-brand-darkRed px-4 py-2 shadow-lg border border-brand-darkRed/10 hover:border-brand-lightRed transition text-xs font-semibold uppercase tracking-wider">
         ← Index
       </a>
     </div>
