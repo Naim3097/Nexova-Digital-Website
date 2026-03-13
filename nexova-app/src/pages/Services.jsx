@@ -123,7 +123,7 @@ export default function Services() {
             {process.map((item, i) => (
               <div key={i} className="relative">
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-lightBlue/10 h-full">
-                  <span className="text-5xl font-heading font-extrabold text-brand-lightBlue/20">{item.step}</span>
+                  <span className="text-5xl font-heading font-black text-brand-lightBlue/20">{item.step}</span>
                   <h3 className="text-lg font-heading font-bold mb-3 mt-4">{item.title}</h3>
                   <p className="opacity-70 text-sm leading-relaxed">{item.desc}</p>
                 </div>

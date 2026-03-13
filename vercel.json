@@ -1,0 +1,8 @@
+{
+  "buildCommand": "node build-all.js",
+  "outputDirectory": "vercel_build",
+  "rewrites": [
+    { "source": "/demo1/(.*)", "destination": "/demo1/index.html" },
+    { "source": "/demo2/(.*)", "destination": "/demo2/index.html" }
+  ]
+}

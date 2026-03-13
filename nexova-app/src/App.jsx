@@ -97,10 +97,10 @@ function Footer() {
 function DemoSwitcher() {
   return (
     <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end gap-2">
-      <a href="http://localhost:3002" className="flex items-center gap-2 bg-brand-darkBlue text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-brand-lightBlue transition text-sm font-semibold">
+      <a href="/demo2/" className="flex items-center gap-2 bg-brand-darkBlue text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-brand-lightBlue transition text-sm font-semibold">
         Switch to Demo 2 →
       </a>
-      <a href="http://localhost:3000" className="flex items-center gap-2 bg-white text-brand-darkBlue px-4 py-2 rounded-full shadow-lg border border-brand-darkBlue/10 hover:border-brand-lightBlue transition text-xs font-medium">
+      <a href="/" className="flex items-center gap-2 bg-white text-brand-darkBlue px-4 py-2 rounded-full shadow-lg border border-brand-darkBlue/10 hover:border-brand-lightBlue transition text-xs font-medium">
         ← Index
       </a>
     </div>
@@ -109,7 +109,7 @@ function DemoSwitcher() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/demo1/">
       <div className="min-h-screen flex flex-col font-body bg-brand-whiteTeal text-brand-darkBlue">
         <Navbar />
         <DemoSwitcher />

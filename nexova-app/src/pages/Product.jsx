@@ -92,7 +92,7 @@ export default function Product() {
               </div>
 
               <div className="mb-8">
-                <span className="text-5xl font-heading font-extrabold">{pkg.price}</span>
+                <span className="text-5xl font-heading font-black">{pkg.price}</span>
                 <span className={`text-base font-normal ${pkg.highlight ? "opacity-50" : "opacity-40"}`}>{pkg.period}</span>
               </div>
 

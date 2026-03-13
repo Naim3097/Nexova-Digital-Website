@@ -76,13 +76,13 @@ export default function Home() {
           <p className="text-brand-darkBlue/60 font-semibold text-base md:text-lg mb-4">
             A growing portfolio of
           </p>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue mb-2">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black leading-[1.05] text-brand-darkBlue mb-2">
             150+ brands
           </h1>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue mb-2">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black leading-[1.05] text-brand-darkBlue mb-2">
             3M+ impressions
           </h1>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-[1.05] text-brand-darkBlue/40 mt-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black leading-[1.05] text-brand-darkBlue/40 mt-4">
             500+ campaigns
           </h2>
         </div>
@@ -113,11 +113,60 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-4xl md:text-5xl font-heading font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd mb-2">{stat.number}</div>
+              <div className="text-4xl md:text-5xl font-heading font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-gradientStart to-brand-gradientEnd mb-2">{stat.number}</div>
               <p className="text-sm md:text-base opacity-60 font-medium">{stat.label}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Design Showcase — Mobbin-style continuous scroll */}
+      <section className="py-20 overflow-hidden">
+        <div className="text-center max-w-3xl mx-auto px-4 mb-14">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-brand-darkBlue leading-tight">
+            Our designs suits<br />your style.
+          </h2>
+        </div>
+
+        {/* Scrolling marquee row */}
+        <div className="relative">
+          <div className="flex gap-6 animate-marquee w-max">
+            {[...Array(2)].map((_, setIdx) => (
+              <div key={setIdx} className="flex gap-6">
+                {[
+                  { label: "Social Feed" },
+                  { label: "Brand Kit" },
+                  { label: "Story Template" },
+                  { label: "Ad Creative" },
+                  { label: "Carousel Post" },
+                  { label: "Presentation" },
+                  { label: "Thumbnail" },
+                  { label: "Poster Design" },
+                ].map((card, i) => (
+                  <div key={i} className="flex flex-col items-center flex-shrink-0">
+                    <p className="text-sm font-semibold text-brand-darkBlue/50 mb-3 tracking-wide">{card.label}</p>
+                    <div className="w-[220px] md:w-[260px] aspect-[4/5] rounded-2xl bg-gradient-to-br from-brand-whiteTeal to-brand-lightBlue/20 border border-brand-lightBlue/15 shadow-sm flex items-center justify-center">
+                      <span className="text-brand-darkBlue/20 text-xs font-medium tracking-wider uppercase">Template</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee {
+            animation: marquee 40s linear infinite;
+          }
+          .animate-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
       </section>
 
       {/* Core Services */}
@@ -156,7 +205,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {process.map((item, i) => (
               <div key={i} className="relative bg-white rounded-2xl p-8 shadow-sm border border-brand-lightBlue/10 hover:border-brand-lightBlue/30 transition">
-                <span className="text-6xl font-heading font-extrabold text-brand-lightBlue/15 absolute top-4 right-6">{item.step}</span>
+                <span className="text-6xl font-heading font-black text-brand-lightBlue/15 absolute top-4 right-6">{item.step}</span>
                 <div className="relative z-10">
                   <h3 className="text-lg font-heading font-bold mb-3 mt-8">{item.title}</h3>
                   <p className="opacity-70 text-sm leading-relaxed">{item.desc}</p>
