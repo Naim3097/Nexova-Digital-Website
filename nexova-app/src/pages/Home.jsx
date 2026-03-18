@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useRef, useState, useEffect } from 'react';
 import { ArrowRight, Palette, PenTool, BarChart3, Star, Users, Award, TrendingUp } from 'lucide-react';
 
 const floatingBrands = [
@@ -14,11 +15,219 @@ const floatingBrands = [
   { src: "/brands/splendid.png", alt: "Splendid", top: "50%", right: "3%", size: "w-12 h-12", delay: "0.6s" },
 ];
 
+const scheduleSteps = [
+  {
+    date: "Week 1–2",
+    title: "Discovery",
+    desc: "We dive deep into your brand, audience, and competitors. Through collaborative workshops and audits, we map out the strategic foundation that every design decision will build upon.",
+    img: "schedule/18.jpg",
+  },
+  {
+    date: "Week 3–4",
+    title: "Design",
+    desc: "Our team translates strategy into scroll-stopping visuals. From social templates to full brand kits, every asset is handcrafted with intention — no cookie-cutter work, ever.",
+    img: "schedule/19.jpg",
+  },
+  {
+    date: "Week 5–6",
+    title: "Launch",
+    desc: "Content goes live across your channels. We monitor performance, gather insights, and iterate in real-time to ensure maximum engagement and measurable growth.",
+    img: "schedule/20.jpg",
+  },
+];
+
+function ScheduleTimeline() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      {/* Centered title */}
+      <div className="text-center mb-20 px-4">
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-black leading-tight">
+          Schedule
+        </h2>
+      </div>
+
+      {/* Two-column layout: left nav + right content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+          {/* Left: phase nav labels */}
+          <div className="flex flex-row md:flex-col gap-4 md:gap-2 md:pt-2 md:min-w-[160px] flex-shrink-0">
+            {scheduleSteps.map((step, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`text-left text-lg md:text-xl font-heading font-bold transition-all duration-300 ${
+                  active === i ? 'text-black' : 'text-gray-300 hover:text-gray-400'
+                }`}
+              >
+                {step.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Right: vertical slide content */}
+          <div className="flex-1 relative overflow-hidden">
+            {scheduleSteps.map((step, i) => (
+              <div
+                key={i}
+                className={`transition-all duration-500 ease-out ${
+                  active === i
+                    ? 'opacity-100 translate-y-0 relative'
+                    : 'opacity-0 translate-y-8 absolute inset-0 pointer-events-none'
+                }`}
+              >
+                {/* Date pill + description */}
+                <div className="mb-8">
+                  <span className="inline-block text-xs font-semibold text-black bg-gray-100 border border-gray-200 rounded-full px-3 py-1.5 mb-4">
+                    {step.date}
+                  </span>
+                  <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg">
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Schedule image */}
+                <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                  <img
+                    src={`${import.meta.env.BASE_URL}${step.img}`}
+                    alt={step.title}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FloatingStars() {
+  const stars = useRef(
+    Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2.5 + 1,
+      opacity: Math.random() * 0.25 + 0.08,
+      duration: Math.random() * 6 + 4,
+      delay: Math.random() * 5,
+      drift: Math.random() * 20 - 10,
+    }))
+  ).current;
+
+  return (
+    <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+      {stars.map((s) => (
+        <div
+          key={s.id}
+          className="absolute rounded-full"
+          style={{
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            background: `radial-gradient(circle, rgba(122,217,251,${s.opacity + 0.15}) 0%, rgba(122,217,251,${s.opacity}) 40%, transparent 70%)`,
+            boxShadow: `0 0 ${s.size * 3}px rgba(122,217,251,${s.opacity * 0.8}), 0 0 ${s.size * 6}px rgba(122,217,251,${s.opacity * 0.3})`,
+            animation: `astroFloat ${s.duration}s ease-in-out ${s.delay}s infinite`,
+            '--drift': `${s.drift}px`,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes astroFloat {
+          0%, 100% { opacity: 0.3; transform: translateY(0) translateX(0); }
+          25% { opacity: 1; }
+          50% { opacity: 0.6; transform: translateY(-15px) translateX(var(--drift)); }
+          75% { opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function AstronautHero() {
+  const heroRef = useRef(null);
+  const textRef = useRef(null);
+  const [blur, setBlur] = useState(8);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const ratio = entry.intersectionRatio;
+        setBlur(Math.max(0, 8 - ratio * 8));
+      },
+      { threshold: Array.from({ length: 21 }, (_, i) => i / 20) }
+    );
+    if (heroRef.current) observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const textBlur = isHovered ? 0 : blur;
+
+  return (
+    <section ref={heroRef} className="relative w-full my-8 overflow-hidden" style={{ minHeight: '85vh' }}>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={`${import.meta.env.BASE_URL}hero/home-astronaut2.jpg`}
+          alt="Astronaut hero background"
+          className="w-full h-full object-cover"
+        />
+        {/* Soft dark blue gradient from the left */}
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,25,47,0.55) 0%, rgba(10,25,47,0.25) 35%, transparent 65%)' }} />
+      </div>
+
+      {/* Floating techy stars */}
+      <FloatingStars />
+
+      {/* Text with blur intro effect — shifted right */}
+      <div className="relative z-10 flex items-center h-full" style={{ minHeight: '85vh' }}>
+        <div
+          ref={textRef}
+          className="max-w-2xl px-12 sm:px-20 lg:px-32 py-16 cursor-default"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{
+            filter: `blur(${textBlur}px)`,
+            transition: 'filter 0.6s ease-out',
+          }}
+        >
+          <p className="text-white/70 text-sm sm:text-base tracking-widest uppercase mb-4 font-medium" style={{ fontFamily: 'Satoshi, sans-serif' }}>
+            A growing portfolio of
+          </p>
+          <h2 className="text-white text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mb-8" style={{ fontFamily: 'Satoshi, sans-serif' }}>
+            150+ brands<br />
+            trust our craft
+          </h2>
+          <div className="flex flex-wrap gap-8 mt-6">
+            <div>
+              <span className="text-white text-3xl sm:text-4xl font-black" style={{ fontFamily: 'Satoshi, sans-serif' }}>3M+</span>
+              <p className="text-white/60 text-sm mt-1" style={{ fontFamily: 'Satoshi, sans-serif' }}>Impressions delivered</p>
+            </div>
+            <div>
+              <span className="text-white text-3xl sm:text-4xl font-black" style={{ fontFamily: 'Satoshi, sans-serif' }}>500+</span>
+              <p className="text-white/60 text-sm mt-1" style={{ fontFamily: 'Satoshi, sans-serif' }}>Campaigns launched</p>
+            </div>
+            <div>
+              <span className="text-white text-3xl sm:text-4xl font-black" style={{ fontFamily: 'Satoshi, sans-serif' }}>98%</span>
+              <p className="text-white/60 text-sm mt-1" style={{ fontFamily: 'Satoshi, sans-serif' }}>Client retention</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const services = [
-    { icon: <Palette size={28} />, title: "Social Media Design", desc: "Scroll-stopping visuals crafted for every platform. We design carousels, reels, and posts that feel authentic to your brand voice." },
-    { icon: <PenTool size={28} />, title: "Branding Content", desc: "From logo systems to brand kits, we build the visual DNA that makes your business instantly recognizable and deeply trusted." },
-    { icon: <BarChart3 size={28} />, title: "Digital Marketing", desc: "Data-informed campaigns that pair human creativity with strategic execution. Real engagement, real conversions." }
+    { icon: <Palette size={28} />, title: "Social Media Design", desc: "Scroll-stopping visuals crafted for every platform. We design carousels, reels, and posts that feel authentic to your brand voice.", video: "capabilities/cap1.mp4" },
+    { icon: <PenTool size={28} />, title: "Branding Content", desc: "From logo systems to brand kits, we build the visual DNA that makes your business instantly recognizable and deeply trusted.", video: "capabilities/cap2.mp4" },
+    { icon: <BarChart3 size={28} />, title: "Digital Marketing", desc: "Data-informed campaigns that pair human creativity with strategic execution. Real engagement, real conversions.", video: "capabilities/cap3.mp4" }
   ];
 
   const stats = [
@@ -96,6 +305,9 @@ export default function Home() {
         `}</style>
       </section>
 
+      {/* Hero Section 2 — Astronaut background with blur intro */}
+      <AstronautHero />
+
       {/* Trusted By / Social Proof */}
       <section className="bg-white py-12 px-4 border-y border-gray-100">
         <div className="max-w-7xl mx-auto">
@@ -134,19 +346,22 @@ export default function Home() {
             {[...Array(2)].map((_, setIdx) => (
               <div key={setIdx} className="flex gap-6">
                 {[
-                  { label: "Social Feed" },
-                  { label: "Brand Kit" },
-                  { label: "Story Template" },
-                  { label: "Ad Creative" },
-                  { label: "Carousel Post" },
-                  { label: "Presentation" },
-                  { label: "Thumbnail" },
-                  { label: "Poster Design" },
+                  { label: "Social Feed", img: "visuals/c2.jpg" },
+                  { label: "Brand Kit", img: "visuals/c3.jpg" },
+                  { label: "Story Template", img: "visuals/c4.jpg" },
+                  { label: "Ad Creative", img: "visuals/c7.jpg" },
+                  { label: "Carousel Post", img: "visuals/c10.jpg" },
+                  { label: "Presentation", img: "visuals/copilot4.jpg" },
+                  { label: "Webinar", img: "visuals/copilot-webinar.jpg" },
+                  { label: "Event Design", img: "visuals/israk-mikraj.jpg" },
+                  { label: "Poster Design", img: "visuals/whats-next.jpg" },
+                  { label: "Campaign", img: "visuals/c2b.jpg" },
+                  { label: "Thumbnail", img: "visuals/c4b.jpg" },
                 ].map((card, i) => (
                   <div key={i} className="flex flex-col items-center flex-shrink-0">
                     <p className="text-sm font-semibold text-brand-darkBlue/50 mb-3 tracking-wide">{card.label}</p>
-                    <div className="w-[220px] md:w-[260px] aspect-[4/5] rounded-2xl bg-gradient-to-br from-brand-whiteTeal to-brand-lightBlue/20 border border-brand-lightBlue/15 shadow-sm flex items-center justify-center">
-                      <span className="text-brand-darkBlue/20 text-xs font-medium tracking-wider uppercase">Template</span>
+                    <div className="w-[220px] md:w-[260px] aspect-[4/5] rounded-2xl overflow-hidden shadow-sm">
+                      <img src={`${import.meta.env.BASE_URL}${card.img}`} alt={card.label} className="w-full h-full object-cover" />
                     </div>
                   </div>
                 ))}
@@ -170,29 +385,42 @@ export default function Home() {
       </section>
 
       {/* Core Services */}
-      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-brand-lightBlue font-semibold text-sm uppercase tracking-widest mb-3">What We Do</p>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">Core Capabilities</h2>
-            <p className="opacity-70">We specialize in three interconnected disciplines that together create a powerful, cohesive brand presence online.</p>
+          {/* Centered headline + sub */}
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-black leading-tight mb-4">
+              Core Capabilities
+            </h2>
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed">We specialize in three interconnected disciplines that together create a powerful, cohesive brand presence online.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          {/* 3-column row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, i) => (
-              <div key={i} className="bg-brand-whiteTeal p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 text-left group">
-                <div className="h-14 w-14 bg-gradient-to-br from-brand-gradientStart to-brand-gradientEnd text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {service.icon}
+              <div key={i} className="flex flex-col">
+                {/* Video box */}
+                <div className="w-full aspect-[4/3] bg-gray-100 rounded-2xl mb-5 overflow-hidden">
+                  <video
+                    src={`${import.meta.env.BASE_URL}${service.video}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-heading font-bold mb-3">{service.title}</h3>
-                <p className="opacity-75 leading-relaxed mb-6">{service.desc}</p>
-                <Link to="/services" className="text-brand-darkBlue font-semibold inline-flex items-center text-sm hover:text-brand-lightBlue transition">
-                  Learn More <ArrowRight size={14} className="ml-1" />
-                </Link>
+                {/* Title + description below */}
+                <h3 className="text-lg md:text-xl font-heading font-bold text-black mb-2">{service.title}</h3>
+                <p className="text-gray-500 leading-relaxed text-sm md:text-base">{service.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Schedule — Mobbin Awards-style horizontal scroll timeline */}
+      <ScheduleTimeline />
 
       {/* How We Work / Process */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
